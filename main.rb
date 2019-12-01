@@ -6,7 +6,7 @@ class String
     str.downcase!
     correct = true
     len = str.length - 1
-    for i in 0..len
+    str.split(//).each do |i|
       if !correct
         break
       end
