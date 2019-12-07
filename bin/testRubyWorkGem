@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'testRubyWorkGem'
+
+puts ARGV[0].valid_brackets?
+puts ARGV[1].palindrome?
