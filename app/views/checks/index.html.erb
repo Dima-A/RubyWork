@@ -1,8 +1,10 @@
 <form action = "/checks/index" method="post">
   <p>
     <h2>Выберите метод проверки</h2>
-    <input type="radio" name="method" value="palindrome">Палиндром
-    <input type="radio" name="method" value="brackets">Скобки
+    <input type="radio" id="palindrome" name="method" value="palindrome">
+    <label for="palindrome">Палиндром</label>
+    <input type="radio" id="brackets" name="method" value="brackets">
+    <label for="brackets">Скобки</label>
   </p>
   <p>
     <h2>Введите текст</h2>
@@ -11,8 +13,8 @@
   <input type="submit"/>
 </form>
 
-<% if !@data.nil? %>
+<% if !params[:result].nil?%>
   <h2>Ответ:
-    <%= @data %>
+    <%= params[:result] %>
    </h2>
 <% end %>
