@@ -1,0 +1,26 @@
+<form action = "/checks/new" method="post">
+  <p>
+    <h2>Выберите метод проверки</h2>
+    <input type="radio" id="palindrome" name="method" value="palindrome">
+    <label for="palindrome">Палиндром</label>
+    <input type="radio" id="brackets" name="method" value="brackets">
+    <label for="brackets">Скобки</label>
+  </p>
+  <p>
+    <h2>Введите текст</h2>
+    <input type="text" name="text">
+  </p>
+  <input type="submit"/>
+</form>
+
+<% if !@data[:result].nil?%>
+  <h2>Ответ:
+    <%= case @data[:result]
+          when true
+            "да"
+          when false
+            "нет"
+        end %>
+   </h2>
+<% end %>
+<br><%= link_to 'Таблица запросов', root_path %>

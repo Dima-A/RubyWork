@@ -1,28 +1,21 @@
-# class ChecksController < ApplicationController
-#   protect_from_forgery :except => [:method, :text]
-#   def index
-#     if params[:method] == "palindrome"
-#       @data = params[:text].palindrome?
-#     elsif params[:method] == "brackets"
-#       @data = params[:text].valid_brackets?
-#     end
-#   end
-# end
-
 class ChecksController < ApplicationController
   protect_from_forgery :except => [:method, :text]
   def index
-    case params[:method]
-      when "palindrome"
-        params[:result] = params[:text].palindrome?
-      when "brackets"
-        params[:result] = params[:text].valid_brackets?
-    end
-    case params[:result]
-      when true
-        params[:result] = "да"
-      when false
-        params[:result] =  "нет"
-    end
+    @data = Check.all
   end
+  def new
+    @data = Check.new(data_params)
+    case @data[:method]
+      when "palindrome"
+        @data[:result] = @data[:text].palindrome?
+      when "brackets"
+        @data[:result] = @data[:text].valid_brackets?
+    end
+    @data.save
+  end
+
+  private
+    def data_params
+      params.permit(:method, :text)
+    end
 end

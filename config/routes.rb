@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'checks/index'
   
-  post "checks/index"    => "checks#index"
+  post "checks/new"    => "checks#new"
   resources :checks
 
   root 'checks#index'
