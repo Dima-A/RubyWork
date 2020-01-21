@@ -3,14 +3,14 @@ class ChecksController < ApplicationController
   def index
     @data = Check.all
   end
-  def new
+  def create
     @data = Check.new(data_params)
-    case @data[:method]
-      when "palindrome"
-        @data[:result] = @data[:text].palindrome?
-      when "brackets"
-        @data[:result] = @data[:text].valid_brackets?
-    end
+    @data[:result] = case @data[:method]
+                     when "palindrome"
+                       @data[:text].palindrome?
+                     when "brackets"
+                       @data[:result] = @data[:text].valid_brackets?
+                     end
     @data.save
   end
 
