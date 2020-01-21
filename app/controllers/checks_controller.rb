@@ -9,7 +9,7 @@ class ChecksController < ApplicationController
                      when "palindrome"
                        @data[:text].palindrome?
                      when "brackets"
-                       @data[:result] = @data[:text].valid_brackets?
+                       @data[:text].valid_brackets?
                      end
     @data.save
   end
