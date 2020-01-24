@@ -1,3 +1,5 @@
+<% if current_user %>
+
 <h1>Listing checks</h1>
 
 <table border="1" style="width: 70%;">
@@ -16,5 +18,22 @@
       <td><%= data.result %></td>
     </tr>
   <% end %>
-</table
-<br><%= link_to 'Новая запись', checks_create_path %>
+</table>
+
+<br>
+<%= link_to 'Новая запись', checks_create_path %> ..
+<%= link_to 'Выйти', sign_out_path, method: :delete %>
+
+<% else %>
+
+    <center>
+    <h1>Добро пожаловать!</h1>
+    <p>Только зарегистрированные пользователи могут что-то там делать.</p>
+    <p>Пожалуйста, зарегистрируйтесь, или войдите под своей учётной записью.</p>
+    <p>
+      <%= link_to 'Регистрация', new_user_path %> ..
+      <%= link_to 'Вход', sign_in_path %>
+    </p>
+    </center>
+
+<% end %>

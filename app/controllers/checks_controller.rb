@@ -16,6 +16,6 @@ class ChecksController < ApplicationController
 
   private
     def data_params
-      params.permit(:method, :text)
+      params.permit(:method, :text, :token)
     end
 end
