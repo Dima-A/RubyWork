@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    user_already_authorized
     @user = User.new
   end
 
@@ -21,4 +22,5 @@ class UsersController < ApplicationController
   def users_params
     params.require(:user).permit(:email, :password)
   end
+  
 end
