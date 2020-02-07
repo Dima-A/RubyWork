@@ -13,13 +13,13 @@ end
 
 def user_already_authorized
   if current_user
-    render "shared/authorized"
+    redirect_to root_path
   end
 end
 
 def user_not_unauthorized
   if !current_user
-    render "shared/unauthorized"
+    redirect_to sign_in_path
   end
 end
 

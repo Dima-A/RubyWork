@@ -1,13 +1,12 @@
 class ChecksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :user_not_unauthorized
 
   def index
-    user_not_unauthorized
-    @data = Check.all
+   @data = Check.search( @current_user[:email] )
   end
 
   def create
-    user_not_unauthorized
     @data = Check.new(data_params)
     @data[:result] = case @data[:method]
                      when "palindrome"
@@ -15,6 +14,7 @@ class ChecksController < ApplicationController
                      when "brackets"
                        @data[:text].valid_brackets?
                      end
+    @data[:email] = @current_user[:email]
     @data.save
   end
 
