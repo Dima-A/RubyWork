@@ -3,7 +3,7 @@ class ChecksController < ApplicationController
   before_action :user_not_unauthorized
 
   def index
-   @data = Check.search( @current_user[:email] )
+    @data = @current_user.checks
   end
 
   def create
@@ -14,7 +14,7 @@ class ChecksController < ApplicationController
                      when "brackets"
                        @data[:text].valid_brackets?
                      end
-    @data[:email] = @current_user[:email]
+    @data[:user_id] = @current_user.id
     @data.save
   end
 
